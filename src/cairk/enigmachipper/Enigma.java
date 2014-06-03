@@ -1,20 +1,48 @@
 package cairk.enigmachipper;
 
-public class Enigma {
+import android.app.Application;
+
+
+public class Enigma extends Application{
 	public String Layer1 = new String ();
 	public String Layer2 = new String ();
 	public String Layer3 = new String ();
-	public String StrInput = new String ();
-	public Enigma(String Inner, String Middle, String Outside, String Input){
-		if(IsPlateValid(Inner) && IsPlateValid(Middle) && IsPlateValid(Outside) && IsInputValid(Input)){
-			Layer1 = Inner;
-			Layer2 = Middle;
-			Layer3  = Outside;
-			StrInput = Input;
-			System.out.println("Input valid!");
-		}else{
-			System.out.println("Maaf input tidak valid!");
+	public String genuineInner = new String();
+	public String genuineMiddle= new String();
+	public String genuineOuter = new String();
+	public String StrInput = new String();
+	
+	public Enigma(){
+		Layer1 = "RYELSZFMT#GNUAHOVBIPWCJQXDK"; 
+		genuineInner = "RYELSZFMT#GNUAHOVBIPWCJQXDK";
+		Layer2 = "#EJOTYCHMRWAFKPUZDINSXBGLQV"; 
+		genuineMiddle = "#EJOTYCHMRWAFKPUZDINSXBGLQV";
+		Layer3  = "#BDFHJLNPRTVXZACEGIKMOQSUWY"; 
+		genuineOuter = "#BDFHJLNPRTVXZACEGIKMOQSUWY";
+	}
+	
+	public void setPlate(String Inner, String Middle, String Outside) {
+		if(IsAllPlateValid(Inner,Middle,Outside)){
+			Layer1 = Inner; genuineInner = Inner;
+			Layer2 = Middle; genuineMiddle = Middle;
+			Layer3  = Outside; genuineOuter = Outside;
 		}
+	}
+	
+	public void setInput(String Input) {
+		if(IsInputValid(Input)) {
+			StrInput = Input;
+		}
+	}
+	
+	public void setLayerLikeBefore(){
+		Layer1 = genuineInner;
+		Layer2 = genuineMiddle;
+		Layer3 = genuineOuter;
+	}
+	
+	public boolean IsAllPlateValid(String Inner, String Middle, String Outside){
+		return IsPlateValid(Inner) && IsPlateValid(Middle) && IsPlateValid(Outside);
 	}
 	
 	public boolean IsPlateValid(String str){
@@ -31,7 +59,7 @@ public class Enigma {
 	}
 	public boolean IsInputValid(String str){
 		String template = "ABCDEFGHIJKLMNOPQRSTUVWXYZ#.";
-		if(str.charAt(str.length()-1)=='.'){
+		if(str.length()>0 && str.charAt(str.length()-1)=='.'){
 			for (int i = 0; i < str.length() ; i++){
 				if(!template.contains(String.valueOf(str.charAt(i)))){
 					return false;
@@ -78,11 +106,26 @@ public class Enigma {
 				Layer3 = RotatePlate(Layer3);
 			}
 		}
-		StrEncrypted +=".";
+		StrEncrypted +="."; 
+		setLayerLikeBefore();
 		return StrEncrypted;
 	}
+	
+	public void SetUpPlate(){
+		for(int i = 0; i < StrInput.length()-1 ; i ++){
+			Layer1 = RotatePlate(Layer1);
+			if((i+1)% 27 == 0){
+				Layer2 = RotatePlate(Layer2);
+			}
+			if((i+1)% (27*27) == 0){
+				Layer3 = RotatePlate(Layer3);
+			}
+		}
+	}
+	
 	public String Decrypt(){
 		String StrDecrypted = new String ();
+		SetUpPlate();
 		for(int i = StrInput.length()-2; i >= 0  ; i --){
 			if((i+1)% 27 == 0){
 				Layer2 = UndoRotatePlate(Layer2);
@@ -97,24 +140,9 @@ public class Enigma {
 			Idx = IdxMatch(Layer3,CharAtLayer2);
 			StrDecrypted =Layer1.charAt(Idx) + StrDecrypted; 
 		}
-		StrDecrypted +=".";
+		StrDecrypted +="."; 
+		setLayerLikeBefore();
 		return StrDecrypted;
 	}
 	
-	public static void main (String [] args){
-		String Inner    ="RYELSZFMT#GNUAHOVBIPWCJQXDK";
-		String Middle  = "#EJOTYCHMRWAFKPUZDINSXBGLQV";
-		String Outside = "#BDFHJLNPRTVXZACEGIKMOQSUWY";
-		String Input = "AAAAAAAABBBBBBBBBBBBBCCCCCCCCCDDDDDDDDDDDDDDEEEEEEEEE.";
-		String Enc = new String();
-		String Dec = new String();
-		//Melakukan enkripsi
-		Enigma myEnigmaEnc = new Enigma(Inner,Middle,Outside,Input);
-		Enc = myEnigmaEnc.Encrypt();
-		System.out.println(Enc);	
-		//decript
-		Enigma myEnigmaDec = new Enigma(Inner,Middle,Outside,Enc);
-		Dec = myEnigmaDec.Decrypt();
-		System.out.println(Dec);
-	}
 }

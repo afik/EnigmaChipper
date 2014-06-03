@@ -1,6 +1,6 @@
 package cairk.enigmachipper;
 
-//import android.content.Intent;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
@@ -9,13 +9,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-//import android.widget.TextView;
+import android.widget.EditText;
 
 public class SetupMachineActivity extends ActionBarActivity {
-
+		
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_setup_machine);
+		
+		if (savedInstanceState == null) {
+			getSupportFragmentManager().beginTransaction()
+					.add(R.id.container, new PlaceholderFragment()).commit();
+		}
 	}
 
 	@Override
@@ -53,6 +59,23 @@ public class SetupMachineActivity extends ActionBarActivity {
 					container, false);
 			return rootView;
 		}
+	}
+	
+	public void SetMachine (View view) {
+		Intent intent = new Intent(this, MainActivity.class);
+        Enigma myEnigmaEnc = (Enigma)getApplicationContext();
+        String Inner = new String();
+    	String Middle = new String();
+    	String Outer = new String();
+    	
+		EditText editInner = (EditText) findViewById(R.id.edit_inner);
+		EditText editMiddle = (EditText) findViewById(R.id.edit_middle);
+		EditText editOuter = (EditText) findViewById(R.id.edit_outer);
+		Inner = editInner.getText().toString();
+		Middle = editMiddle.getText().toString();
+		Outer = editOuter.getText().toString();
+		myEnigmaEnc.setPlate(Inner, Middle, Outer);
+		startActivity(intent);
 	}
 
 }

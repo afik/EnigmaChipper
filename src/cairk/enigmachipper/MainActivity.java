@@ -17,12 +17,11 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }
+			getSupportFragmentManager().beginTransaction()
+					.add(R.id.container, new PlaceholderFragment()).commit();
+		}
     }
 
 
@@ -64,9 +63,6 @@ public class MainActivity extends ActionBarActivity {
     
     public void SetupMachine(View view) {
     	Intent intent = new Intent(this, SetupMachineActivity.class);
-    	//EditText editText = (EditText) findViewById(R.id.edit_message);
-    	//String message = editText.getText().toString();
-    	//intent.putExtra(EXTRA_MESSAGE, message);
     	startActivity(intent);
     }
     
@@ -77,6 +73,11 @@ public class MainActivity extends ActionBarActivity {
     
     public void Decrypt(View view){
     	Intent intent = new Intent(this, DecryptActivity.class);
+    	startActivity(intent);
+    }
+    
+    public void About(View view) {
+    	Intent intent = new Intent(this, About.class);
     	startActivity(intent);
     }
 }

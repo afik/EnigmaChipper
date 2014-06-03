@@ -1,17 +1,16 @@
 package cairk.enigmachipper;
 
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
-import android.support.v4.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-import android.os.Build;
+
 
 public class DecryptActivity extends ActionBarActivity {
 	public final static String EXTRA_CODE = "cairk.enigmachipper.CODE";
@@ -66,20 +65,15 @@ public class DecryptActivity extends ActionBarActivity {
 	
 	public void DecryptCode(View view) {
 		Intent intent = new Intent(this, ShowMessage.class);
-		String Inner    ="RYELSZFMT#GNUAHOVBIPWCJQXDK";
-		String Middle  = "#EJOTYCHMRWAFKPUZDINSXBGLQV";
-		String Outside = "#BDFHJLNPRTVXZACEGIKMOQSUWY";
-		
+        Enigma myEnigmaEnc = (Enigma)getApplicationContext();
+
 		EditText editText = (EditText) findViewById(R.id.edit_code);
 		String Input = editText.getText().toString() + ".";
+		myEnigmaEnc.setInput(Input);
 		
-		//Melakukan enkripsi
-		Enigma myEnigmaEnc = new Enigma(Inner,Middle,Outside,Input);
-
 		String message = myEnigmaEnc.Decrypt();
     	intent.putExtra(EXTRA_CODE, message);
     	System.out.println(message);
-    	System.out.println("kjdnakfn");
     	startActivity(intent);
 	}
 

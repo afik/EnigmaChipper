@@ -7,14 +7,18 @@
     <string name="button_setup">Setup The Machine</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_main">MainActivity</string>
-    <string name="title_activity_setup_machine">Setup Machine</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="button_encrypt">Encrypt Your Messages</string>
-    <string name="button_decrypt">Decrypt Your Code</string>
+    <string name="title_activity_setup_machine">Setup The Machine</string>
     <string name="title_activity_encrypt">Encrypt</string>
     <string name="title_activity_decrypt">Decrypt</string>
+    <string name="button_encrypt">Encrypt Your Messages</string>
+    <string name="button_decrypt">Decrypt Your Code</string>
     <string name="logo">Enigmacing Logo</string>
     <string name="title_activity_show_code">ShowCode</string>
     <string name="title_activity_show_message">ShowMessage</string>
+    <string name="edit_inner">Enter Key For Inner Plate</string>
+    <string name="edit_middle">Enter Key For Middle Plate</string>
+    <string name="edit_outer">Enter Key For Outer Plate</string>
+    <string name="done">Done!</string>
+    <string name="title_activity_about">About</string>
 
 </resources>

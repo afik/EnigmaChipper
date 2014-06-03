@@ -4,46 +4,57 @@
     android:layout_height="match_parent"
     android:gravity="center" >
 
-    <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:onClick="Decrypt"
-        android:text="@string/button_decrypt" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button3"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:onClick="Encrypt"
-        android:text="@string/button_encrypt" />
-
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button2"
-        android:layout_alignRight="@+id/button3"
-        android:layout_marginBottom="10dp"
-        android:onClick="SetupMachine"
-        android:text="@string/button_setup" />
+    <ImageView
+        android:id="@+id/but_setup"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/but_about"
+        android:clickable="true"  
+ 		android:onClick="SetupMachine"
+        android:src="@drawable/but_setup" />
 
     <ImageView
-        android:contentDescription="@string/logo"
-        android:id="@+id/imageView1"
+        android:id="@+id/but_encrypt"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignTop="@+id/but_about"
+        android:layout_toRightOf="@+id/but_setup"
+        android:layout_marginLeft="5dp"
+        android:clickable="true"  
+ 		android:onClick="Encrypt"
+        android:src="@drawable/but_encrypt" />
+
+    <ImageView
+        android:id="@+id/but_decrypt"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_alignTop="@+id/but_about"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/but_encrypt"
+        android:clickable="true"  
+ 		android:onClick="Decrypt"
+        android:src="@drawable/but_decrypt" />
+
+    <ImageView
+        android:id="@+id/but_about"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_below="@+id/logo"
+        android:layout_marginLeft="5dp"
+        android:layout_toRightOf="@+id/but_decrypt"
+        android:clickable="true"  
+ 		android:onClick="About"
+        android:src="@drawable/but_about" />
+
+    <ImageView
+        android:id="@+id/logo"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="38dp"
-        android:adjustViewBounds="true"
-        android:scaleType="fitXY"
-        android:src="@drawable/enigmacing_ic" />
+        android:layout_marginTop="10dp"
+        android:src="@drawable/enigmacing_logo"
+        android:antialias="false" />
 
 </RelativeLayout>

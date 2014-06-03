@@ -18,7 +18,7 @@ public class EncryptActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_encrypt);
-
+		
 		if (savedInstanceState == null) {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
@@ -64,20 +64,15 @@ public class EncryptActivity extends ActionBarActivity {
 	
 	public void EncryptMessage(View view) {
 		Intent intent = new Intent(this, ShowCode.class);
-		String Inner    ="RYELSZFMT#GNUAHOVBIPWCJQXDK";
-		String Middle  = "#EJOTYCHMRWAFKPUZDINSXBGLQV";
-		String Outside = "#BDFHJLNPRTVXZACEGIKMOQSUWY";
+        Enigma myEnigmaEnc = (Enigma)getApplicationContext();
 		
 		EditText editText = (EditText) findViewById(R.id.edit_message);
 		String Input = editText.getText().toString() + ".";
+		myEnigmaEnc.setInput(Input);
 		
-		//Melakukan enkripsi
-		Enigma myEnigmaEnc = new Enigma(Inner,Middle,Outside,Input);
-
 		String code = myEnigmaEnc.Encrypt();
     	intent.putExtra(EXTRA_MESSAGE, code);
     	System.out.println(code);
-    	System.out.println("kjdnakfn");
     	startActivity(intent);
 	}
 
