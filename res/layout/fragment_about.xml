@@ -7,46 +7,61 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="cairk.enigmachipper.About$PlaceholderFragment" >
-    <LinearLayout
-        android:orientation="vertical"
-        android:padding="10dp"
-        android:layout_marginTop="25dp"
-        android:id="@+id/ab_program"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content" 
-        android:layout_below="@+id/plates">
-
-        <TextView
-            android:id="@+id/sentence1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="This is a simplified enigma chipper simulator. As replacement of rotors in real machine we use three plates, which will rotate after encoding each character. " />
-        <TextView
-            android:id="@+id/sentence2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="For more information about program please visit http://dave-reed.com/csc427.F10/HW/HW2problems/enigma.html" />
-  </LinearLayout>
-
-    <ImageView
-        android:id="@+id/plates"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="27dp"
-        android:antialias="false"
-        android:src="@drawable/plates" />
-
-    <TextView
-        android:id="@+id/sentence3"
+     
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ab_program"
-        android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:text="Copyright to enigmacing team" />
+        android:layout_marginTop="10dp" >
+		
+        <RelativeLayout 
+            android:id="@+id/relative2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+            
+			<TextView
+		        android:id="@+id/sentence3"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/ab_program"
+		        android:layout_centerHorizontal="true"
+		        android:gravity="center"
+		        android:text="Copyright to enigmacing team" />
+			
+		     <ImageView
+			        android:id="@+id/plates"
+			        android:layout_width="200dp"
+			        android:layout_height="200dp"
+			        android:layout_alignParentTop="true"
+			        android:layout_centerHorizontal="true"
+			        android:layout_marginTop="27dp"
+			        android:antialias="false"
+			        android:src="@drawable/plates" />
+		                 
+	        <LinearLayout
+		        android:orientation="vertical"
+		        android:padding="10dp"
+		        android:layout_marginTop="25dp"
+		        android:id="@+id/ab_program"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_below="@+id/plates" >
+		
+		        <TextView
+		            android:id="@+id/sentence1"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:gravity="center"
+		            android:text="This is a simplified enigma chipper simulator. As replacement of rotors in real machine we use three plates, which will rotate after encoding each character. " />
+		        <TextView
+		            android:id="@+id/sentence2"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:gravity="center"
+		            android:text="For more information about program please visit http://dave-reed.com/csc427.F10/HW/HW2problems/enigma.html" />
+	  		</LinearLayout>
+	   </RelativeLayout>
+    </ScrollView>
+
     	
 </RelativeLayout>
